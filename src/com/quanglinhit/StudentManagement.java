@@ -40,6 +40,7 @@ public class StudentManagement {
 		Scanner sc=new Scanner(System.in);
 		String search=sc.nextLine();
 		listStudents.forEach(stu->{
+			int i=0;
 			if (stu.getName().startsWith(search) || stu.getName().contentEquals(search) || 
 				stu.getCode().startsWith(search) || stu.getCode().contentEquals(search)) {
 				System.out.println("Bạn đã xóa thông tin sinh viên:");
@@ -47,9 +48,9 @@ public class StudentManagement {
 				System.out.println("SĐT sv: "+stu.getPhone()+"\nĐịa chỉ sv: "+stu.getAddress());
 				listStudents.remove(stu);
 				System.out.println("--------------------");
+				i++;
 				menu();
-				
-			}else {
+			}if(i==0) {
 				System.out.println("Không có sinh viên này!!!");
 				System.out.println("--------------------");
 				menu();
@@ -62,6 +63,7 @@ public class StudentManagement {
 		Scanner sc=new Scanner(System.in);
 		String search=sc.nextLine();
 		listStudents.forEach(stu->{
+			int i=0;
 			if (stu.getName().startsWith(search) || stu.getName().contentEquals(search) || 
 				stu.getCode().startsWith(search) || stu.getCode().contentEquals(search)) {
 				System.out.println("Bạn đang sửa thông tin sinh viên:");
@@ -83,13 +85,15 @@ public class StudentManagement {
 				stu.setPhone(phone);
 				stu.setAddress(address);
 				System.out.println("--------------------");
+				i++;
+				menu();
 				
-			}else {
+			}if(i==0) {
 				System.out.println("Không có sinh viên này!!!");
 				System.out.println("--------------------");
+				menu();
 			}
 		});
-		menu();
 	}
 
 	private static void addStudent() {
