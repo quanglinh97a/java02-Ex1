@@ -32,6 +32,8 @@ public class StudentManagement {
 	}
 
 	private static void exit() {
+		System.out.println("Bạn đã thoát khỏi chương trình!!!");
+		System.out.println("--------------------");
 		System.exit(0);
 	}
 
@@ -40,17 +42,15 @@ public class StudentManagement {
 		Scanner sc=new Scanner(System.in);
 		String search=sc.nextLine();
 		listStudents.forEach(stu->{
-			int i=0;
-			if (stu.getName().startsWith(search) || stu.getName().contentEquals(search) || 
-				stu.getCode().startsWith(search) || stu.getCode().contentEquals(search)) {
+			if (stu.getName().startsWith(search) || stu.getName().equalsIgnoreCase(search) || 
+				stu.getCode().startsWith(search) || stu.getCode().equalsIgnoreCase(search)) {
 				System.out.println("Bạn đã xóa thông tin sinh viên:");
 				System.out.println("Tên sv: "+stu.getName()+"\nMã sv: "+stu.getCode());
 				System.out.println("SĐT sv: "+stu.getPhone()+"\nĐịa chỉ sv: "+stu.getAddress());
-				listStudents.remove(stu);
 				System.out.println("--------------------");
-				i++;
+				listStudents.remove(stu);
 				menu();
-			}if(i==0) {
+			}else {
 				System.out.println("Không có sinh viên này!!!");
 				System.out.println("--------------------");
 				menu();
@@ -63,21 +63,19 @@ public class StudentManagement {
 		Scanner sc=new Scanner(System.in);
 		String search=sc.nextLine();
 		listStudents.forEach(stu->{
-			int i=0;
-			if (stu.getName().startsWith(search) || stu.getName().contentEquals(search) || 
-				stu.getCode().startsWith(search) || stu.getCode().contentEquals(search)) {
+			if (stu.getName().startsWith(search) || stu.getName().equalsIgnoreCase(search) || 
+				stu.getCode().startsWith(search) || stu.getCode().equalsIgnoreCase(search)) {
 				System.out.println("Bạn đang sửa thông tin sinh viên:");
 				System.out.println("Tên sv: "+stu.getName()+"\nMã sv: "+stu.getCode());
 				System.out.println("SĐT sv: "+stu.getPhone()+"\nĐịa chỉ sv: "+stu.getAddress());
 				System.out.println("--------------------");
-
-				System.out.println("Nhập tên sv: ");
+				System.out.println("Nhập lại tên sv: ");
 				String name=sc.nextLine();
-				System.out.println("Nhập mã sv: ");
+				System.out.println("Nhập lại mã sv: ");
 				String code=sc.nextLine();
-				System.out.println("Nhập SĐT: ");
+				System.out.println("Nhập lại SĐT: ");
 				String phone=sc.nextLine();
-				System.out.println("Nhập địa chỉ: ");
+				System.out.println("Nhập lại địa chỉ: ");
 				String address=sc.nextLine();
 				
 				stu.setName(name);
@@ -85,10 +83,8 @@ public class StudentManagement {
 				stu.setPhone(phone);
 				stu.setAddress(address);
 				System.out.println("--------------------");
-				i++;
 				menu();
-				
-			}if(i==0) {
+			}else {
 				System.out.println("Không có sinh viên này!!!");
 				System.out.println("--------------------");
 				menu();
@@ -129,12 +125,12 @@ public class StudentManagement {
 	}
 	
 	public static void main(String[] args) {
-		Student stu1 = new Student("Linh","D00425","0964014282","Đống Đa");
-		Student stu2 = new Student("Tuấn","D00433","0910978956","Hà Đông");
-		Student stu3 = new Student("Đức","D00463","0165273677","Cầu Giấy");
-		Student stu4 = new Student("Nam","D00484","0993216598","Thanh Xuân");
-		Student stu5 = new Student("Khánh","D00421","0907470842","Hoàn Kiếm");
-		Student stu6 = new Student("Danh","D00495","0163854754","Ba Đình");
+		Student stu1 = new Student("Chiến","D00413","0163854754","Ba Đình");
+		Student stu2 = new Student("Đức","D00416","0165273677","Cầu Giấy");
+		Student stu3 = new Student("Khánh","D00421","0907470842","Hoàn Kiếm");
+		Student stu4 = new Student("Linh","D00425","0964014282","Đống Đa");
+		Student stu5 = new Student("Nam","D00430","0993216598","Thanh Xuân");
+		Student stu6 = new Student("Tuấn","D00433","0910978956","Hà Đông");
 		listStudents.add(stu1); listStudents.add(stu2); listStudents.add(stu3);
 		listStudents.add(stu4); listStudents.add(stu5); listStudents.add(stu6);
 		menu();
